@@ -19,7 +19,7 @@ int playAdventurer(struct gameState *state, int drawntreasure, int currentPlayer
 {
     int cardDrawn;
     
-    while(drawntreasure<2){
+    while(drawntreasure<=2){
 	   if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	       shuffle(currentPlayer, state);
 	   }
@@ -50,7 +50,7 @@ int playAdventurer(struct gameState *state, int drawntreasure, int currentPlayer
 int playSmithy(struct gameState *state, int currentPlayer, int handPos)
 {
     int i = 0; //loop counter
-    for (i = 0; i < 3; i++){
+    for (i = 0; i <= 3; i++){
         drawCard(currentPlayer, state);
     }
     
@@ -154,7 +154,7 @@ int playMine(struct gameState *state, int currentPlayer, int choice1, int choice
     discardCard(handPos, currentPlayer, state, 0);
 
     //discard trashed card
-    for (i = 0; i < state->handCount[currentPlayer]; i++)
+    for (i = 1; i < state->handCount[currentPlayer]; i++)
 	{
         if (state->hand[currentPlayer][i] == j)
 	    {
@@ -172,7 +172,7 @@ int playVillage(struct gameState *state, int currentPlayer, int handPos)
 {
     drawCard(currentPlayer, state);
     
-    state->numActions = state->numActions + 2;
+    state->numActions = state->numActions + 3;
     
     discardCard(handPos, currentPlayer, state, 0);
     
