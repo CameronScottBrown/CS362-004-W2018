@@ -667,7 +667,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      while(drawntreasure<=2){ //bugged
+      while(drawntreasure<2){ //unbugged
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
@@ -791,7 +791,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       discardCard(handPos, currentPlayer, state, 0);
 
       //discard trashed card
-      for (i = 1; i < state->handCount[currentPlayer]; i++)//bugged
+      for (i = 0; i < state->handCount[currentPlayer]; i++)//unbugged
 	{
 	  if (state->hand[currentPlayer][i] == j)
 	    {
@@ -830,7 +830,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 		
     case smithy:
       //+3 Cards
-      for (i = 0; i <= 3; i++) //bugged
+      for (i = 0; i < 3; i++) //unbugged
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -844,7 +844,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       drawCard(currentPlayer, state);
 			
       //+2 Actions
-      state->numActions = state->numActions + 3;//bugged
+      state->numActions = state->numActions + 2;//unbugged
 			
       //discard played card from hand
       discardCard(handPos, currentPlayer, state, 0);
