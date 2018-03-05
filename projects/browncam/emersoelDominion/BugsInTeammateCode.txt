@@ -1,0 +1,26 @@
+BugsInTeammateCode.txt
+
+Submitter:	Cameron Brown			Date:	03/03/2018
+Bug ID:		village001				
+Bug Title:	Too Many Actions from Village
+Priority:	Medium
+Environment:	OSU school server running Linux (on an Intel Xeon CPU X5650  @ 2.67GHz)
+Description:	When a player plays the Village card, they are granted +5 actions instead of
+		the typical +2 actions. This results in odd behavior, as the turn takes longer to 
+		end, giving that player more opportunities to play other cards. Also, for some reason, the Estate deck is decremented whenever the Village card is played over a series of tests. 
+		This likely results from the extended action phase and players acquiring estate cards during them.
+Reproduce it:	Play Village from hand. 
+Expected:	Player received +2 actions before the Village Card is then discarded.
+Actual:		Player received +5 actions before the Village Card is finally discarded.
+
+Submitter:	Cameron Brown			Date:	03/03/2018
+Bug ID:		smithy002				
+Bug Title:	Smithy Only Gives Two Cards
+Priority:	High
+Environment: 	OSU school server running Linux (on an Intel Xeon CPU X5650  @ 2.67GHz)
+Description:	When a player plays the Smithy card, they are granted +2 cards instead of the 
+		typical +3 cards. The implications of this may not seem high, but a series of unit tests showed that this bug also results in changes in the player’s action count as well as a change 
+		in the Estate deck. This strange behavior shows that the bug interferes with the functionality of the overall game in ways that are difficult to predict.
+Reproduce it:	Play Smithy from hand.
+Expected:	Player received +3 cards into their hand and receives no +Action.
+Actual:		Player received +2 cards into their hand and somehow has a change in Actions.
